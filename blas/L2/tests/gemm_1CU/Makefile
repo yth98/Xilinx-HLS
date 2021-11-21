@@ -52,7 +52,7 @@ help::
 TARGET ?= sw_emu
 
 # ################### Setting up default value of DEVICE ##############################
-DEVICE ?= xilinx_u250_xdma_201830_2
+DEVICE ?= xilinx_u50_gen3x16_xdma_201920_3
 
 # ###################### Setting up default value of HOST_ARCH ####################### 
 HOST_ARCH ?= x86
