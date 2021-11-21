@@ -99,7 +99,7 @@ class HLS:
                         self.error = True
                     if line.find(r"C/RTL co-simulation finished: PASS") >= 0:
                         self.passCosim = True
-                    if line.find("Finished generating all RTL models") >= 0:
+                    if line.find("Finished Generating all RTL models") >= 0:
                         self.passSyn = True
                     if line.find("CSim done with 0 errors") >= 0:
                         self.passCsim = True
