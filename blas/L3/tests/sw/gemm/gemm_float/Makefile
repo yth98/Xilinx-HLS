@@ -83,7 +83,7 @@ export XCL_BINDIR = $(XCLBIN_DIR)
 #Include Required Host Source Files
 HOST_SRCS += $(XFLIB_DIR)/L3/tests/sw/gemm/gemm_test.cpp
 
-CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=0
+CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=1
 CXXFLAGS += -I$(XFLIB_DIR)/L3/include/sw
 CXXFLAGS += -I$(XFLIB_DIR)/L3/tests/sw/gemm
 LDFLAGS += -luuid -lxrt_coreutil
