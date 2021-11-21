@@ -239,6 +239,7 @@ class HLS:
         with open(self.directive, 'w') as f:
             for inface in self.params.op.interfaceList:
                 #f.write('set_directive_interface -mode m_axi -depth %d "uut_top" %s\n'%(vs, inface))
-                f.write(
-                    'set_directive_array_partition -type cyclic -factor %d -dim 1 "uut_top" %s\n' %
-                    (self.params.parEntries, inface))
+                # f.write(
+                #     'set_directive_array_partition -type cyclic -factor %d -dim 1 "uut_top" %s\n' %
+                #     (self.params.parEntries, inface))
+                pass
