@@ -36,23 +36,34 @@ This project simplifies **PYNQ Composable Pipeline v0.9.0** and removes HDMI I/O
 * Ubuntu 18.04, or other GNU/Linux distributions
 * Docker without root
 * Vivado 2020.1 and Vivado 2020.2
+* [PyTorch >= 1.5.0](https://pytorch.org/)
+* [Brevitas >= v0.7.0](https://github.com/Xilinx/brevitas)
 * [FINN v0.7](https://github.com/Xilinx/finn/releases/tag/v0.7)
 * [TUL PYNQ-Z2 development board](https://www.tulembedded.com/FPGA/ProductsPYNQ-Z2.html)
 
 ### Procedure
 
-1. After setting up environment variables for FINN, execute
+1. Install Brevitas and replace `brevitas_examples/bnn_pynq/` with `./bnn_pynq/` .
+
+   Follow the instruction in [`./bnn_pynq/README.md`](./bnn_pynq/README.md) to train the `VGG-5` model, \
+   and then move the trained `./bnn_pynq/VGG.onnx` to `./FINN/model.onnx` .
+
+2. After setting up environment variables for FINN, execute
 
    ```sh
    ./run-docker.sh build_custom Xilinx-HLS/Preprocess_CNN_Pipeline/FINN
    ```
 
-   under the root directory of FINN.
+   under the root directory of FINN to build the CNN IP in advanced build mode.
 
-2. The deployment package will be generated under \
-   `./output_vgg_gray_Pynq-Z2/deploy/` .
+3. The deployment package will be generated under \
+   `./FINN/output_vgg_gray_Pynq-Z2/deploy/` .
 
-   Upload this folder to PYNQ-Z2 optionally together with `validate.py`, `testx_gray.npy`, `testy.npy` in `./driver/`, if batched top-1 accuracy validation is needed.
+   If batched top-1 accuracy validation is needed, put \
+   `./FINN/driver/validate.py`, `./FINN/driver/testx_gray.npy`, `./FINN/driver/testy.npy` \
+   into the deployment package.
 
-3. The out-of-context stitched IP will be generated under \
-   `./output_vgg_gray_Pynq-Z2/stitched_ip/ip/` .
+4. The out-of-context stitched IP will be generated under \
+   `./FINN/output_vgg_gray_Pynq-Z2/stitched_ip/ip/` .
+
+   It can be further used in building customized Composable Pipeline.
